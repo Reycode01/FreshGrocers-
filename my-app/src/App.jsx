@@ -18,7 +18,7 @@ const App = () => {
   const [showProducts, setShowProducts] = useState(false);
   const [showCartDetails, setShowCartDetails] = useState(false);
   const [showCustomerList, setShowCustomerList] = useState(false);
-  const [showCalendar, setShowCalendar]= useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [calendarType, setCalendarType] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [bucket, setBucket] = useState([]);
@@ -72,14 +72,16 @@ const App = () => {
     setSelectedDate(date);
   };
 
-  const handleAddToBucket = (updatedBucket, newTotalAmount) => {
+  const handleAddToBucket = (product) => {
+    const updatedBucket = [...bucket, product];
+    const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
     setBucket(updatedBucket);
     setTotalAmount(newTotalAmount);
   };
 
-  const handleCalculateTotal = (bucket, total) => {
-    setBucket(bucket);
-    setTotalAmount(total);
+  const handleCalculateTotal = () => {
+    const newTotalAmount = bucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+    setTotalAmount(newTotalAmount);
     setShowCartDetails(true);
   };
 
@@ -93,15 +95,15 @@ const App = () => {
   const renderCategory = () => {
     switch (selectedCategory) {
       case 'cereals':
-        return <Cereals />;
+        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
       case 'vegetables':
-        return <Vegetables />;
+        return <Vegetables onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
       case 'fruits':
-        return <Fruits />;
+        return <Fruits onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
       case 'kitchensauce':
-        return <KitchenSauce />;
+        return <KitchenSauce onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
       default:
-        return <Cereals />;
+        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
     }
   };
 
@@ -131,7 +133,7 @@ const App = () => {
             </ul>
             <div className="cart-icon-container" onClick={handleCartClick}>
               <img src={cartImage} alt="Cart" className="cart-icon" />
-              <span className="cart-badge">{bucket.reduce((acc, item) => acc + item.initialQuantity, 0)}</span>
+              <span className="cart-badge">{bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}</span>
             </div>
           </div>
         </nav>
@@ -173,8 +175,8 @@ const App = () => {
             </div>
           )}
           {showProducts && <Products onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />}
-          {showCartDetails && <CartDetails bucket={bucket} totalAmount={totalAmount} />}
-          {showCustomerList && <CustomerList bucket={bucket} />}
+          {showCartDetails && <CartDetails cart={bucket} totalAmount={totalAmount} />}
+          {showCustomerList && <CustomerList cart={bucket} totalAmount={totalAmount} />}
         </div>
         <div ref={cerealsRef}>{renderCategory()}</div>
       </main>
@@ -187,6 +189,8 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
 

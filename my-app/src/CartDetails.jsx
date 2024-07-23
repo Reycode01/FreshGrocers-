@@ -1,28 +1,26 @@
 import React from 'react';
-import './CartDetails.css'; // Add styles as needed
+import './CartDetails.css';
 
-const CartDetails = ({ bucket }) => {
+const CartDetails = ({ cart = [], totalAmount = 0 }) => {
   return (
     <div className="cart-details">
-      <h2>Your Cart</h2>
-      {bucket.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {bucket.map(item => (
-            <li key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <h3>{item.name}</h3>
-                <p>Price: ${item.price}</p>
-                <p>Quantity: {item.initialQuantity}</p>
-              </div>
+      <h2>Cart Details</h2>
+      <ul>
+        {cart.length > 0 ? (
+          cart.map((product, index) => (
+            <li key={index}>
+              {product.name} - ${product.price.toFixed(2)} x {product.initialQuantity}
             </li>
-          ))}
-        </ul>
-      )}
+          ))
+        ) : (
+          <li>No items in the cart</li>
+        )}
+      </ul>
+      <h3>Total Amount: ${totalAmount.toFixed(2)}</h3>
     </div>
   );
 };
 
 export default CartDetails;
+
+

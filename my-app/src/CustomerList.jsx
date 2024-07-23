@@ -1,21 +1,28 @@
-// CustomerList.jsx
 import React from 'react';
+import './CustomerList.css';
 
-const CustomerList = ({ bucket, totalAmount }) => {
+const CustomerList = ({ cart = [], totalAmount = 0 }) => {
   return (
-    <div>
+    <div className="customer-list">
       <h2>Customer List</h2>
       <ul>
-        {bucket.map(product => (
-          <li key={product.id}>
-            {product.name} - Quantity: {product.initialQuantity} - Total Price: Ksh. {product.price * product.initialQuantity}
-          </li>
-        ))}
+        {cart.length > 0 ? (
+          cart.map((product, index) => (
+            <li key={index}>
+              {product.name} - ${product.price.toFixed(2)}
+            </li>
+          ))
+        ) : (
+          <li>No products in the cart</li>
+        )}
       </ul>
-      <h3>Total Amount: Ksh. {totalAmount}</h3>
+      <h3>Total Amount: ${totalAmount.toFixed(2)}</h3>
     </div>
   );
 };
 
 export default CustomerList;
+
+
+
 

@@ -13,3 +13,4 @@ const CategorySelection = ({ onCategoryChange }) => {
 };
 
 export default CategorySelection;
+

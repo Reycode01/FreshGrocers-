@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import './KitchenSauce.css'; // Make sure this CSS file exists and is properly styled
-import sauceImage from './assets/tomatoes collections.jpeg';
+import './KitchenSauce.css';
+import bucketImage from './assets/tomatoes collections.jpeg';
 import tomatoesImage from './assets/tomatoes.jpg';
 import onionsImage from './assets/Fresh ball onions.jpg';
 
-const initialSauces = [
-  { id: 13, name: 'Bucket of Kitchen Sauce', image: sauceImage, price: 300, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 12, name: 'Tomatoes', image: tomatoesImage, price: 15, quantityLabel: 'each', initialQuantity: 1 },
-  { id: 4, name: 'Onions', image: onionsImage, price: 10, quantityLabel: '@', initialQuantity: 1 },
+const initialKitchenSauces = [
+  { id: 1, name: 'Bucket of Kitchen Sauce', image: bucketImage, price: 500, quantityLabel: 'per Bucket', initialQuantity: 1 },
+  { id: 2, name: 'Tomatoes', image: tomatoesImage, price: 120, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 3, name: 'Onions', image: onionsImage, price: 90, quantityLabel: 'per Kg', initialQuantity: 1 },
 ];
 
 const KitchenSauce = ({ onAddToBucket, onDone }) => {
-  const [sauces, setSauces] = useState(initialSauces);
+  const [kitchenSauces, setKitchenSauces] = useState(initialKitchenSauces);
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
   const handleQuantityChange = (id, increment) => {
-    const updatedSauces = sauces.map(sauce => {
+    const updatedKitchenSauces = kitchenSauces.map(sauce => {
       if (sauce.id === id) {
         const newQuantity = sauce.initialQuantity + increment;
         return { ...sauce, initialQuantity: newQuantity > 0 ? newQuantity : 1 };
       }
       return sauce;
     });
-    setSauces(updatedSauces);
+    setKitchenSauces(updatedKitchenSauces);
   };
 
   const handleAddToBucket = (sauce) => {
@@ -50,7 +50,7 @@ const KitchenSauce = ({ onAddToBucket, onDone }) => {
     <div className="kitchen-sauce-container">
       <h2>Kitchen Sauce</h2>
       <div className="product-list">
-        {sauces.map((sauce) => (
+        {kitchenSauces.map((sauce) => (
           <div key={sauce.id} className="product-card">
             <img src={sauce.image} alt={sauce.name} className="product-image" />
             <h3>{sauce.name}</h3>
@@ -77,4 +77,10 @@ const KitchenSauce = ({ onAddToBucket, onDone }) => {
 };
 
 export default KitchenSauce;
+
+ 
+
+
+
+
 

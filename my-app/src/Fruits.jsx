@@ -6,10 +6,10 @@ import pineapplesImage from './assets/pineaples.jpg';
 import sweetBananasImage from './assets/Sweetbananas.jpg';
 
 const initialFruits = [
-  { id: 2, name: 'Banana', image: bananaImage, price: 15, quantityLabel: '@', initialQuantity: 1 },
-  { id: 5, name: 'Mangoes', image: mangoesImage, price: 20, quantityLabel: '@', initialQuantity: 1 },
-  { id: 8, name: 'Pineapple', image: pineapplesImage, price: 100, quantityLabel: '@', initialQuantity: 1 },
-  { id: 14, name: 'Sweet Bananas', image: sweetBananasImage, price: 300, quantityLabel: 'Bunch of 20', initialQuantity: 1 },
+  { id: 1, name: 'Banana', image: bananaImage, price: 50, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 2, name: 'Mangoes', image: mangoesImage, price: 70, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 3, name: 'Pineapples', image: pineapplesImage, price: 100, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 4, name: 'Sweet Bananas', image: sweetBananasImage, price: 60, quantityLabel: 'per Kg', initialQuantity: 1 },
 ];
 
 const Fruits = ({ onAddToBucket, onDone }) => {
@@ -79,4 +79,7 @@ const Fruits = ({ onAddToBucket, onDone }) => {
 };
 
 export default Fruits;
+
+
+
 

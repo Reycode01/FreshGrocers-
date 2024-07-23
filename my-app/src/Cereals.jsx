@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import './Cereals.css'; // Ensure this CSS file exists and is styled appropriately
+import './Cereals.css';
 import maizeImage from './assets/Bucket.jpeg';
 import beansImage from './assets/Beans Busket.png';
-import grainedMaizeImage from './assets/Maize.jpeg';
+import grainedMaizeImage from './assets/Maize.jpeg'; // Update this to correct file name if necessary
 import potatoesImage from './assets/potatoes.png';
 import peasImage from './assets/Peas.jpg';
 
+// Initial Cereals data
 const initialCereals = [
-  { id: 1, name: 'Fresh Maize', image: maizeImage, price: 50, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 2, name: 'French Beans', image: beansImage, price: 80, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 3, name: 'Grained Maize', image: grainedMaizeImage, price: 70, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 4, name: 'Potatoes', image: potatoesImage, price: 40, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 5, name: 'Peas', image: peasImage, price: 60, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 1, name: 'Fresh Maize', image: maizeImage, price: 200, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 2, name: 'French Beans', image: beansImage, price: 150, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 3, name: 'Grained Maize', image: grainedMaizeImage, price: 250, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 4, name: 'Potatoes', image: potatoesImage, price: 100, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 5, name: 'Peas', image: peasImage, price: 180, quantityLabel: 'per Kg', initialQuantity: 1 },
 ];
 
 const Cereals = ({ onAddToBucket, onDone }) => {
@@ -47,7 +48,7 @@ const Cereals = ({ onAddToBucket, onDone }) => {
   const handleCalculateTotal = () => {
     const total = bucket.reduce((acc, cereal) => acc + cereal.price * cereal.initialQuantity, 0);
     setTotalAmount(total);
-    onDone(); // Call the onDone prop function
+    onDone();
   };
 
   return (
@@ -81,5 +82,10 @@ const Cereals = ({ onAddToBucket, onDone }) => {
 };
 
 export default Cereals;
+
+
+
+
+
 
 
