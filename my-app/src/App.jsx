@@ -73,10 +73,35 @@ const App = () => {
   };
 
   const handleAddToBucket = (product) => {
-    const updatedBucket = [...bucket, product];
-    const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
-    setBucket(updatedBucket);
-    setTotalAmount(newTotalAmount);
+    setBucket(prevBucket => {
+      const existingProductIndex = prevBucket.findIndex(item => item.name === product.name);
+      if (existingProductIndex >= 0) {
+        // Update the quantity of the existing product
+        const updatedBucket = prevBucket.map((item, index) => 
+          index === existingProductIndex 
+            ? { ...item, initialQuantity: (item.initialQuantity || 1) + (product.initialQuantity || 1) }
+            : item
+        );
+        const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+        setTotalAmount(newTotalAmount);
+        return updatedBucket;
+      } else {
+        // Add the new product to the bucket
+        const updatedBucket = [...prevBucket, product];
+        const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+        setTotalAmount(newTotalAmount);
+        return updatedBucket;
+      }
+    });
+  };
+
+  const handleDeleteFromBucket = (index) => {
+    setBucket(prevBucket => {
+      const updatedBucket = prevBucket.filter((_, i) => i !== index);
+      const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+      setTotalAmount(newTotalAmount);
+      return updatedBucket;
+    });
   };
 
   const handleCalculateTotal = () => {
@@ -175,10 +200,13 @@ const App = () => {
             </div>
           )}
           {showProducts && <Products onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />}
-          {showCartDetails && <CartDetails cart={bucket} totalAmount={totalAmount} />}
-          {showCustomerList && <CustomerList cart={bucket} totalAmount={totalAmount} />}
+          {showCartDetails && <CartDetails cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />}
+          {showCustomerList && <CustomerList cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />}
         </div>
-        <div ref={cerealsRef}>{renderCategory()}</div>
+        <div ref={cerealsRef} id="cereals">{selectedCategory === 'cereals' && renderCategory()}</div>
+        <div ref={vegetablesRef} id="vegetables">{selectedCategory === 'vegetables' && renderCategory()}</div>
+        <div ref={fruitsRef} id="fruits">{selectedCategory === 'fruits' && renderCategory()}</div>
+        <div ref={kitchenSauceRef} id="kitchensauce">{selectedCategory === 'kitchensauce' && renderCategory()}</div>
       </main>
 
       <footer className="footer">
@@ -189,6 +217,8 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
 
