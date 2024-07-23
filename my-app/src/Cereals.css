@@ -1,0 +1,17 @@
+.cereals {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .cereals h2 {
+    color: #4CAF50;
+  }
+  
+  .cereals ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cereals li {
+    padding: 5px 0;
+  }

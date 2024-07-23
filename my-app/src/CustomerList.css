@@ -1,0 +1,25 @@
+.customer-list {
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .customer-list-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+  }
+  
+  .customer-list-item-image {
+    width: 100px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  
+  .customer-list-item-details {
+    flex: 1;
+  }
+  

@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+nav {
+  background-color: #4CAF50;
+  padding: 0.5rem 1rem; /* Adjust padding to fit content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between signature and nav items */
+  position: relative; /* To ensure correct positioning of items */
+}
+
+nav .nav-items {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem; /* Reduced gap between items */
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem; /* Increase padding for better visibility */
+  display: block;
+  font-size: 1.1rem; /* Increase font size */
+}
+
+.cart-icon-container {
+  position: relative;
+}
+
+.cart-icon {
+  width: 36px; /* Increased size for better visibility */
+  height: 36px; /* Increased size for better visibility */
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px; /* Adjust position to sit on top of the icon */
+  right: -5px; /* Adjust position to sit on top of the icon */
+  background-color: #e53935;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cover-image {
+  width: 40%;
+  height: auto;
+}
+
+.delivery-info {
+  text-align: center;
+}
+
+.delivery-btn, .address-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem; /* Increased padding for better visibility */
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  font-size: 1rem; /* Increased font size */
+}
+
+.delivery-btn:hover, .address-btn:hover {
+  background-color: #45a049;
+}
+
+.calendar-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-popup h2 {
+  margin-top: 0;
+}
+
+
+

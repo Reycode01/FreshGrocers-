@@ -1,0 +1,18 @@
+.fruits {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .fruits h2 {
+    color: #4CAF50;
+  }
+  
+  .fruits ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .fruits li {
+    padding: 5px 0;
+  }
+  
