@@ -61,9 +61,8 @@ nav ul li a {
   font-weight: bold;
 }
 
-
 .app-container {
-  max-width: 2800px;
+  max-width: 1400px; /* Adjust for better fit on larger screens */
   margin: 0 auto;
   padding: 1rem;
   background-color: white;
@@ -71,7 +70,7 @@ nav ul li a {
 }
 
 .cover-image {
-  width: 30%;
+  width: 100%; /* Make cover image responsive */
   height: auto;
 }
 
@@ -108,6 +107,66 @@ nav ul li a {
 .calendar-popup h2 {
   margin-top: 0;
 }
+
+/* Mobile devices (portrait and landscape) */
+@media only screen and (max-width: 600px) {
+  .app-container {
+    padding: 0.5rem; /* Adjust padding for mobile devices */
+  }
+
+  nav {
+    flex-direction: column; /* Stack nav items vertically on small screens */
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack nav items vertically */
+  }
+
+  nav ul li {
+    margin-bottom: 0.5rem; /* Space between nav items */
+  }
+
+  .cover-image {
+    width: 100%; /* Make cover image fit mobile screens */
+  }
+}
+
+/* Tablets (portrait and landscape) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .app-container {
+    padding: 1rem; /* Adjust padding for tablets */
+  }
+
+  .cover-image {
+    width: 80%; /* Adjust cover image size for tablets */
+  }
+}
+
+/* Desktops and larger devices */
+@media only screen and (min-width: 1000px) {
+  .app-container {
+    padding: 2rem; /* Adjust padding for desktops */
+  }
+
+  .cover-image {
+    width: 40%; /* Adjust cover image size for larger screens */
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
 
 
 
