@@ -1,29 +1,107 @@
-.cereals {
-    padding: 20px;
-    background-color: #f9f9f9;
+.cereals-container {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.cereals-container h2 {
+  color: #4CAF50;
+  font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+.search-bar {
+  width: 100%; /* Full width */
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Fit as many columns as possible */
+  gap: 1px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 1px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 80%;
+  height: auto;
+}
+
+.product-card h3 {
+  font-size: 0.9rem; /* Smaller font size */
+  margin: 10px 0;
+}
+
+.product-card .product-price,
+.product-card .product-quantity,
+.product-card .quantity-controls {
+  font-size: 0.8rem; /* Smaller font size */
+  margin: 5px 0;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  font-size: 0.7rem;
+}
+
+.add-to-bucket,
+.cart-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin: 5px 0;
+}
+
+.add-to-bucket:hover,
+.cart-btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .product-card {
+    padding: 5px;
   }
   
-  .cereals h2 {
-    color: #4CAF50;
+  .product-card h3 {
+    font-size: 0.9rem; /* Further reduce font size on very small screens */
   }
-  
-  .cereals ul {
-    list-style-type: none;
-    padding: 0;
+
+  .product-card .product-price,
+  .product-card .product-quantity,
+  .product-card .quantity-controls {
+    font-size: 0.8rem; /* Further reduce font size */
   }
-  
-  .cereals li {
-    padding: 5px 0;
+
+  .quantity-controls button {
+    padding: 4px 5px;
+    font-size: 0.9rem;
   }
-  .search-bar {
-    width: 80%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #3498db; /* Light Blue Border */
-    border-radius: 4px;
-    background-color: #4CAF50; /* Light Gray Background */
-    color: #000000; /* Dark Gray Text Color */
+
+  .add-to-bucket,
+  .cart-btn {
+    padding: 6px;
+    font-size: 0.9rem;
   }
+}
+
+
+
   
   
   
