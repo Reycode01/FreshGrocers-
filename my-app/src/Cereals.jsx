@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Cereals.css';
 import maizeImage from './assets/Bucket.jpeg';
 import beansImage from './assets/Beans Busket.png';
-import grainedMaizeImage from './assets/Maize.jpeg'; // Update this to correct file name if necessary
+import grainedMaizeImage from './assets/Maize.jpeg';
 import potatoesImage from './assets/potatoes.png';
 import peasImage from './assets/Peas.jpg';
 import mwitemaniaImage from './assets/Mwitemania.jpg';
@@ -18,17 +18,18 @@ const initialCereals = [
   { id: 3, name: 'Grained Maize', image: grainedMaizeImage, price: 250, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 4, name: 'Potatoes', image: potatoesImage, price: 100, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 5, name: 'Peas', image: peasImage, price: 180, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 6, name: 'Mwitemania Beans', image: mwitemaniaImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
-  { id: 7, name: 'Nyayo Beans', image:nyayoImage, price: 270, quantity: 'per Kg', initialQuantity: 1},
-  { id: 10, name: 'Wairimu Beans', image:wairimuImage, price: 260, quantity: 'per Kg', initialQuantity: 1},
-  { id: 11, name: 'Yellow Beans', image: yelllowImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
-  { id: 12, name: 'Green Beans', image: GreenImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
+  { id: 6, name: 'Mwitemania Beans', image: mwitemaniaImage, price: 300, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 7, name: 'Nyayo Beans', image: nyayoImage, price: 270, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 10, name: 'Wairimu Beans', image: wairimuImage, price: 260, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 11, name: 'Yellow Beans', image: yelllowImage, price: 300, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 12, name: 'Green Beans', image: GreenImage, price: 300, quantityLabel: 'per Kg', initialQuantity: 1 },
 ];
 
 const Cereals = ({ onAddToBucket, onDone }) => {
   const [cereals, setCereals] = useState(initialCereals);
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleQuantityChange = (id, increment) => {
     const updatedCereals = cereals.map(cereal => {
@@ -61,11 +62,22 @@ const Cereals = ({ onAddToBucket, onDone }) => {
     onDone();
   };
 
+  const filteredCereals = cereals.filter(cereal =>
+    cereal.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="cereals-container">
       <h2>Cereals</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-bar"
+      />
       <div className="product-list">
-        {cereals.map((cereal) => (
+        {filteredCereals.map((cereal) => (
           <div key={cereal.id} className="product-card">
             <img src={cereal.image} alt={cereal.name} className="product-image" />
             <h3>{cereal.name}</h3>
@@ -92,6 +104,8 @@ const Cereals = ({ onAddToBucket, onDone }) => {
 };
 
 export default Cereals;
+
+
 
 
 

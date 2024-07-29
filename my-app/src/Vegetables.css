@@ -20,3 +20,17 @@
   background-color: #ff4500; /* OrangeRed color */
   transform: scale(0.95);
 }
+
+/* Vegetables.css */
+
+/* Search bar styling */
+.search-bar {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+

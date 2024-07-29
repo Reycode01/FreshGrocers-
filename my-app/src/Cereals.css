@@ -15,3 +15,17 @@
   .cereals li {
     padding: 5px 0;
   }
+  .search-bar {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #3498db; /* Light Blue Border */
+    border-radius: 4px;
+    background-color: #4CAF50; /* Light Gray Background */
+    color: #000000; /* Dark Gray Text Color */
+  }
+  
+  
+  
+  
+  

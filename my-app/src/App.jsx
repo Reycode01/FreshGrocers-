@@ -1,5 +1,3 @@
-// /mnt/data/FreshGrocers/FreshGrocers--main/my-app/src/App.jsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import coverImage from './assets/Front.jpeg';
@@ -34,7 +32,6 @@ const App = () => {
   const fruitsRef = useRef(null);
   const kitchenSauceRef = useRef(null);
 
-  // Load the bucket and total amount from local storage on component mount
   useEffect(() => {
     const storedBucket = JSON.parse(localStorage.getItem('bucket')) || [];
     const storedTotalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
@@ -42,7 +39,6 @@ const App = () => {
     setTotalAmount(storedTotalAmount);
   }, []);
 
-  // Save the bucket and total amount to local storage whenever they change
   useEffect(() => {
     localStorage.setItem('bucket', JSON.stringify(bucket));
     localStorage.setItem('totalAmount', totalAmount.toString());
@@ -173,7 +169,9 @@ const App = () => {
             </ul>
             <div className="cart-icon-container" onClick={handleCartClick}>
               <img src={cartImage} alt="Cart" className="cart-icon" />
-              <span className="cart-badge">{bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}</span>
+              <span className="cart-badge">
+                {bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}
+              </span>
             </div>
           </div>
         </motion.nav>
@@ -261,6 +259,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 

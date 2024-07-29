@@ -10,13 +10,13 @@ const initialKitchenSauces = [
   { id: 2, name: 'Tomatoes', image: tomatoesImage, price: 120, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 3, name: 'Onions', image: onionsImage, price: 90, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 4, name: 'Eggs', image: eggsImage, price: 300, quantityLabel: 'per Tray', initialQuantity: 1 },
-   
 ];
 
 const KitchenSauce = ({ onAddToBucket, onDone }) => {
   const [kitchenSauces, setKitchenSauces] = useState(initialKitchenSauces);
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleQuantityChange = (id, increment) => {
     const updatedKitchenSauces = kitchenSauces.map(sauce => {
@@ -49,11 +49,22 @@ const KitchenSauce = ({ onAddToBucket, onDone }) => {
     onDone();
   };
 
+  const filteredKitchenSauces = kitchenSauces.filter(sauce =>
+    sauce.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="kitchen-sauce-container">
       <h2>Kitchen Sauce</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-bar"
+      />
       <div className="product-list">
-        {kitchenSauces.map((sauce) => (
+        {filteredKitchenSauces.map((sauce) => (
           <div key={sauce.id} className="product-card">
             <img src={sauce.image} alt={sauce.name} className="product-image" />
             <h3>{sauce.name}</h3>

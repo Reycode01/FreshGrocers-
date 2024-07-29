@@ -18,22 +18,21 @@ const initialFruits = [
   { id: 2, name: 'Mangoes', image: mangoesImage, price: 70, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 3, name: 'Pineapples', image: pineapplesImage, price: 100, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 4, name: 'Sweet Bananas', image: sweetBananasImage, price: 60, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 5, name: 'Green Apples', image: greenApplesImage, price: 200, quantityLabel: '@10 pcs', initialQuantity: 1},
-  { id: 6, name: 'Goose Berries', image: GooseberriesImage, price: 150, quantityLabel: '500 grams', initialQuantity: 1},
-  { id: 7, name: 'Red Apples', image: ApplesImage, price: 200, quantityLabel: '@10 pcs', initialQuantity: 1},
-  { id: 8, name: 'Red Plums', image: redPlumsImage, price: 150, quantityLabel:'500 grams', initialQuantity: 1},
-  { id: 9, name: 'Seeded Red Grapes', image: SouthAfricaGrapeImage, price: 250, quantityLabel: '500 grams', initialQuantity: 1},
-  { id: 10, name: 'Melon', image: waterMelonImage, price: 500, quantityLabel: '1 Melon', initialQuantity: 1},
-  { id: 11, name: 'Ovacado', image: ovacadoesImage, price: 400, quantityLabel: 'per Kg', initialQuantity: 1},
-  { id: 12, name: 'Organic Lemons', image: lemonImage, price: 20, quantityLabel: 'Each Lemon', initialQuantity: 1},
-  
-
+  { id: 5, name: 'Green Apples', image: greenApplesImage, price: 200, quantityLabel: '@10 pcs', initialQuantity: 1 },
+  { id: 6, name: 'Goose Berries', image: GooseberriesImage, price: 150, quantityLabel: '500 grams', initialQuantity: 1 },
+  { id: 7, name: 'Red Apples', image: ApplesImage, price: 200, quantityLabel: '@10 pcs', initialQuantity: 1 },
+  { id: 8, name: 'Red Plums', image: redPlumsImage, price: 150, quantityLabel: '500 grams', initialQuantity: 1 },
+  { id: 9, name: 'Seeded Red Grapes', image: SouthAfricaGrapeImage, price: 250, quantityLabel: '500 grams', initialQuantity: 1 },
+  { id: 10, name: 'Melon', image: waterMelonImage, price: 500, quantityLabel: '1 Melon', initialQuantity: 1 },
+  { id: 11, name: 'Ovacado', image: ovacadoesImage, price: 400, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 12, name: 'Organic Lemons', image: lemonImage, price: 20, quantityLabel: 'Each Lemon', initialQuantity: 1 },
 ];
 
 const Fruits = ({ onAddToBucket, onDone }) => {
   const [fruits, setFruits] = useState(initialFruits);
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleQuantityChange = (id, increment) => {
     const updatedFruits = fruits.map(fruit => {
@@ -66,11 +65,22 @@ const Fruits = ({ onAddToBucket, onDone }) => {
     onDone();
   };
 
+  const filteredFruits = fruits.filter(fruit =>
+    fruit.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="fruits-container">
       <h2>Fruits</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-bar"
+      />
       <div className="product-list">
-        {fruits.map((fruit) => (
+        {filteredFruits.map((fruit) => (
           <div key={fruit.id} className="product-card">
             <img src={fruit.image} alt={fruit.name} className="product-image" />
             <h3>{fruit.name}</h3>
@@ -97,6 +107,7 @@ const Fruits = ({ onAddToBucket, onDone }) => {
 };
 
 export default Fruits;
+
 
 
 

@@ -42,6 +42,7 @@ const Vegetables = ({ onAddToBucket, onDone }) => {
   const [vegetables, setVegetables] = useState(initialVegetables);
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleQuantityChange = (id, increment) => {
     const updatedVegetables = vegetables.map(veg => {
@@ -92,11 +93,22 @@ const Vegetables = ({ onAddToBucket, onDone }) => {
     setVegetables(updatedVegetables);
   };
 
+  const filteredVegetables = vegetables.filter(veg =>
+    veg.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="vegetables-container">
       <h2>Vegetables</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-bar"
+      />
       <div className="product-list">
-        {vegetables.map((veg) => (
+        {filteredVegetables.map((veg) => (
           <div key={veg.id} className="product-card">
             <img src={veg.image} alt={veg.name} className="product-image" />
             <h3>{veg.name}</h3>
@@ -135,6 +147,7 @@ const Vegetables = ({ onAddToBucket, onDone }) => {
 };
 
 export default Vegetables;
+
 
 
 
