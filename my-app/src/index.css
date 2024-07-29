@@ -7,7 +7,7 @@ body {
 
 nav {
   background-color: #4CAF50;
-  padding: 0.5rem 1rem; /* Adjust padding to fit content */
+  padding: 0.5rem 5rem; /* Adjust padding to fit content */
   display: flex;
   align-items: center;
   justify-content: space-between; /* Space between signature and nav items */
@@ -62,7 +62,7 @@ nav ul li a {
 }
 
 .app-container {
-  max-width: 1000px; /* Adjust for better fit on larger screens */
+  max-width: 900px; /* Adjust for better fit on larger screens */
   margin: 0 auto;
   padding: 1rem;
   background-color: white;
