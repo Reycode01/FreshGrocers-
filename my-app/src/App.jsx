@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+// /mnt/data/FreshGrocers/FreshGrocers--main/my-app/src/App.jsx
+
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import coverImage from './assets/Front.jpeg';
 import cartImage from './assets/cart.png';
@@ -7,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Products from './Products';
 import CustomerList from './CustomerList';
 import CartDetails from './CartDetails';
+import Modal from './Modal';
 import Cereals from './Cereals';
 import Vegetables from './Vegetables';
 import Fruits from './Fruits';
@@ -24,11 +27,26 @@ const App = () => {
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('cereals');
+  const [showModal, setShowModal] = useState(false);
 
   const cerealsRef = useRef(null);
   const vegetablesRef = useRef(null);
   const fruitsRef = useRef(null);
   const kitchenSauceRef = useRef(null);
+
+  // Load the bucket and total amount from local storage on component mount
+  useEffect(() => {
+    const storedBucket = JSON.parse(localStorage.getItem('bucket')) || [];
+    const storedTotalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+    setBucket(storedBucket);
+    setTotalAmount(storedTotalAmount);
+  }, []);
+
+  // Save the bucket and total amount to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('bucket', JSON.stringify(bucket));
+    localStorage.setItem('totalAmount', totalAmount.toString());
+  }, [bucket, totalAmount]);
 
   const handleAboutClick = () => {
     setShowAbout(true);
@@ -45,10 +63,7 @@ const App = () => {
   };
 
   const handleCartClick = () => {
-    setShowCartDetails(true);
-    setShowAbout(false);
-    setShowProducts(false);
-    setShowCustomerList(false);
+    setShowModal(true);
   };
 
   const handleCustomerListClick = () => {
@@ -75,37 +90,33 @@ const App = () => {
   const handleAddToBucket = (product) => {
     setBucket(prevBucket => {
       const existingProductIndex = prevBucket.findIndex(item => item.name === product.name);
+      let updatedBucket;
       if (existingProductIndex >= 0) {
-        // Update the quantity of the existing product
-        const updatedBucket = prevBucket.map((item, index) => 
-          index === existingProductIndex 
+        updatedBucket = prevBucket.map((item, index) =>
+          index === existingProductIndex
             ? { ...item, initialQuantity: (item.initialQuantity || 1) + (product.initialQuantity || 1) }
             : item
         );
-        const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
-        setTotalAmount(newTotalAmount);
-        return updatedBucket;
       } else {
-        // Add the new product to the bucket
-        const updatedBucket = [...prevBucket, product];
-        const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
-        setTotalAmount(newTotalAmount);
-        return updatedBucket;
+        updatedBucket = [...prevBucket, { ...product, initialQuantity: product.initialQuantity || 1 }];
       }
+      const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * item.initialQuantity, 0);
+      setTotalAmount(newTotalAmount);
+      return updatedBucket;
     });
   };
 
   const handleDeleteFromBucket = (index) => {
     setBucket(prevBucket => {
       const updatedBucket = prevBucket.filter((_, i) => i !== index);
-      const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+      const newTotalAmount = updatedBucket.reduce((sum, item) => sum + item.price * item.initialQuantity, 0);
       setTotalAmount(newTotalAmount);
       return updatedBucket;
     });
   };
 
   const handleCalculateTotal = () => {
-    const newTotalAmount = bucket.reduce((sum, item) => sum + item.price * (item.initialQuantity || 1), 0);
+    const newTotalAmount = bucket.reduce((sum, item) => sum + item.price * item.initialQuantity, 0);
     setTotalAmount(newTotalAmount);
     setShowCartDetails(true);
   };
@@ -135,7 +146,11 @@ const App = () => {
   return (
     <div className="app-container">
       <header className="App-header">
-        <nav>
+        <motion.nav
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="nav-items">
             <ul>
               <li><a href="#cereals" onClick={() => {
@@ -161,11 +176,16 @@ const App = () => {
               <span className="cart-badge">{bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}</span>
             </div>
           </div>
-        </nav>
+        </motion.nav>
       </header>
 
       <main className="main-content">
-        <div className="content">
+        <motion.div
+          className="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           {!showAbout && !showProducts && !showCartDetails && !showCustomerList && (
             <>
               <h1>Welcome to FreshGrocers!</h1>
@@ -178,7 +198,12 @@ const App = () => {
                 <button className="delivery-btn" onClick={handleScheduleLaterClick}>Schedule Later</button>
               </div>
               {showCalendar && (
-                <div className="calendar-popup">
+                <motion.div
+                  className="calendar-popup"
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <h2>Schedule Your Delivery</h2>
                   <DatePicker
                     selected={selectedDate}
@@ -190,24 +215,43 @@ const App = () => {
                     placeholderText="Select a date"
                   />
                   <button className="delivery-btn" onClick={() => setShowCalendar(false)}>Confirm Schedule</button>
-                </div>
+                </motion.div>
               )}
             </>
           )}
           {showAbout && (
-            <div className="about-us">
+            <motion.div
+              className="about-us"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               {/* ... About Us content ... */}
-            </div>
+            </motion.div>
           )}
           {showProducts && <Products onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />}
           {showCartDetails && <CartDetails cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />}
           {showCustomerList && <CustomerList cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />}
+        </motion.div>
+        <div className="categories-container">
+          <div ref={cerealsRef} className="category-section">
+            {selectedCategory === 'cereals' && renderCategory()}
+          </div>
+          <div ref={vegetablesRef} className="category-section">
+            {selectedCategory === 'vegetables' && renderCategory()}
+          </div>
+          <div ref={fruitsRef} className="category-section">
+            {selectedCategory === 'fruits' && renderCategory()}
+          </div>
+          <div ref={kitchenSauceRef} className="category-section">
+            {selectedCategory === 'kitchensauce' && renderCategory()}
+          </div>
         </div>
-        <div ref={cerealsRef} id="cereals">{selectedCategory === 'cereals' && renderCategory()}</div>
-        <div ref={vegetablesRef} id="vegetables">{selectedCategory === 'vegetables' && renderCategory()}</div>
-        <div ref={fruitsRef} id="fruits">{selectedCategory === 'fruits' && renderCategory()}</div>
-        <div ref={kitchenSauceRef} id="kitchensauce">{selectedCategory === 'kitchensauce' && renderCategory()}</div>
       </main>
+
+      <Modal show={showModal} handleClose={() => setShowModal(false)}>
+        <CartDetails cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />
+      </Modal>
 
       <footer className="footer">
         <p>&copy; 2024 FreshGrocers. All rights reserved.</p>

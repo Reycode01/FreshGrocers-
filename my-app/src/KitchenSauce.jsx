@@ -3,11 +3,14 @@ import './KitchenSauce.css';
 import bucketImage from './assets/tomatoes collections.jpeg';
 import tomatoesImage from './assets/tomatoes.jpg';
 import onionsImage from './assets/Fresh ball onions.jpg';
+import eggsImage from './assets/tray of eggs.jpg';
 
 const initialKitchenSauces = [
   { id: 1, name: 'Bucket of Kitchen Sauce', image: bucketImage, price: 500, quantityLabel: 'per Bucket', initialQuantity: 1 },
   { id: 2, name: 'Tomatoes', image: tomatoesImage, price: 120, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 3, name: 'Onions', image: onionsImage, price: 90, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 4, name: 'Eggs', image: eggsImage, price: 300, quantityLabel: 'per Tray', initialQuantity: 1 },
+   
 ];
 
 const KitchenSauce = ({ onAddToBucket, onDone }) => {

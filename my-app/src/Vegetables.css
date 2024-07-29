@@ -1,18 +1,22 @@
-.vegetables {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .vegetables h2 {
-    color: #4CAF50;
-  }
-  
-  .vegetables ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .vegetables li {
-    padding: 5px 0;
-  }
-  
+/* Vegetables.css */
+
+.ready-made-button {
+  background-color: #ff7f50; /* Coral color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.ready-made-button:hover {
+  background-color: #490c0c; /* Tomato color */
+  transform: scale(1.05);
+}
+
+.ready-made-button:active {
+  background-color: #ff4500; /* OrangeRed color */
+  transform: scale(0.95);
+}

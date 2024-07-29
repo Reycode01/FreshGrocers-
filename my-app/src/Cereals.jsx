@@ -5,14 +5,24 @@ import beansImage from './assets/Beans Busket.png';
 import grainedMaizeImage from './assets/Maize.jpeg'; // Update this to correct file name if necessary
 import potatoesImage from './assets/potatoes.png';
 import peasImage from './assets/Peas.jpg';
+import mwitemaniaImage from './assets/Mwitemania.jpg';
+import nyayoImage from './assets/Nyayo.jpg';
+import wairimuImage from './assets/Wairimu.jpg';
+import yelllowImage from './assets/Yellow beans.jpg';
+import GreenImage from './assets/Green Beans.jpg';
 
 // Initial Cereals data
 const initialCereals = [
   { id: 1, name: 'Fresh Maize', image: maizeImage, price: 200, quantityLabel: 'per Kg', initialQuantity: 1 },
-  { id: 2, name: 'French Beans', image: beansImage, price: 150, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 2, name: 'Mixed Beans', image: beansImage, price: 280, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 3, name: 'Grained Maize', image: grainedMaizeImage, price: 250, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 4, name: 'Potatoes', image: potatoesImage, price: 100, quantityLabel: 'per Kg', initialQuantity: 1 },
   { id: 5, name: 'Peas', image: peasImage, price: 180, quantityLabel: 'per Kg', initialQuantity: 1 },
+  { id: 6, name: 'Mwitemania Beans', image: mwitemaniaImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
+  { id: 7, name: 'Nyayo Beans', image:nyayoImage, price: 270, quantity: 'per Kg', initialQuantity: 1},
+  { id: 10, name: 'Wairimu Beans', image:wairimuImage, price: 260, quantity: 'per Kg', initialQuantity: 1},
+  { id: 11, name: 'Yellow Beans', image: yelllowImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
+  { id: 12, name: 'Green Beans', image: GreenImage, price: 300, quantity: 'per Kg', initialQuantity: 1},
 ];
 
 const Cereals = ({ onAddToBucket, onDone }) => {
