@@ -62,7 +62,7 @@ nav ul li a {
 }
 
 .app-container {
-  max-width: 1400px; /* Adjust for better fit on larger screens */
+  max-width: 1000px; /* Adjust for better fit on larger screens */
   margin: 0 auto;
   padding: 1rem;
   background-color: white;
