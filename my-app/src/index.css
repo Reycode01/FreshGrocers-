@@ -1,23 +1,38 @@
-body {
+/* Global Styles */
+html, body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   background-color: #f0f0f0;
+  box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Navbar Styles */
 nav {
   background-color: #4CAF50;
-  padding: 0.5rem 5rem; /* Adjust padding to fit content */
+  padding: 0.8rem 2rem; /* Consistent padding for all screen sizes */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between signature and nav items */
-  position: relative; /* To ensure correct positioning of items */
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: nowrap; /* No wrapping */
+  box-sizing: border-box;
 }
 
 nav .nav-items {
   display: flex;
   align-items: center;
   margin: 0;
+  gap: 1.5rem;
+  flex: 1; /* Stretch to fill available space */
 }
 
 nav ul {
@@ -25,7 +40,8 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1rem; /* Reduced gap between items */
+  gap: 1rem;
+  flex-wrap: nowrap; /* Ensure items stay on one line */
 }
 
 nav ul li {
@@ -35,9 +51,9 @@ nav ul li {
 nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 0.75rem 1.5rem; /* Increase padding for better visibility */
+  padding: 0.75rem 1.5rem;
   display: block;
-  font-size: 1.1rem; /* Increase font size */
+  font-size: 1rem;
 }
 
 .cart-icon-container {
@@ -45,32 +61,36 @@ nav ul li a {
 }
 
 .cart-icon {
-  width: 36px; /* Increased size for better visibility */
-  height: 36px; /* Increased size for better visibility */
+  width: 36px;
+  height: 36px;
 }
 
 .cart-badge {
   position: absolute;
-  top: -5px; /* Adjust position to sit on top of the icon */
-  right: -5px; /* Adjust position to sit on top of the icon */
+  top: -5px;
+  right: -5px;
   background-color: #e53935;
   color: white;
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
 }
 
+/* App Container Styles */
 .app-container {
-  max-width: 1000px; /* Adjust for better fit on larger screens */
-  margin: 0 auto;
+  width: 95%;
+  max-width: 1400px;
+  margin: 1rem auto;
   padding: 1rem;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .cover-image {
-  width: 20%; /* Make cover image responsive */
+  width: 100%;
   height: auto;
 }
 
@@ -78,15 +98,16 @@ nav ul li a {
   text-align: center;
 }
 
+/* Button Styles */
 .delivery-btn, .address-btn {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem; /* Increased padding for better visibility */
+  padding: 0.75rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
-  font-size: 1rem; /* Increased font size */
+  font-size: 1rem;
 }
 
 .delivery-btn:hover, .address-btn:hover {
@@ -108,38 +129,46 @@ nav ul li a {
   margin-top: 0;
 }
 
-/* Responsive adjustments */
-@media only screen and (max-width: 600px) {
+/* Product Grid Styles */
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 800px) {
   nav {
-    padding: 0.5rem; /* Reduce padding on small screens */
+    padding: 0.5rem 1rem;
   }
 
   nav ul {
-    gap: 0.5rem; /* Reduce gap between nav items on small screens */
+    gap: 0.5rem;
   }
 
   nav ul li a {
-    padding: 0.5rem 1rem; /* Reduce padding on nav links */
-    font-size: 0.9rem; /* Reduce font size */
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 
   .app-container {
-    padding: 0.5rem; /* Adjust padding for mobile devices */
+    padding: 0.5rem;
+  }
+
+  .delivery-btn, .address-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
-.container {
-  width: 100%;
-  height: 100vh; /* Full viewport height */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-img {
-  max-width: 100%;
-  height: auto; /* Maintain aspect ratio */
-}
 
 
 

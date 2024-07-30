@@ -12,7 +12,6 @@ import Cereals from './Cereals';
 import Vegetables from './Vegetables';
 import Fruits from './Fruits';
 import KitchenSauce from './KitchenSauce';
-import './App.css';
 
 const App = () => {
   const [showAbout, setShowAbout] = useState(false);
@@ -31,6 +30,7 @@ const App = () => {
   const vegetablesRef = useRef(null);
   const fruitsRef = useRef(null);
   const kitchenSauceRef = useRef(null);
+  
 
   useEffect(() => {
     const storedBucket = JSON.parse(localStorage.getItem('bucket')) || [];

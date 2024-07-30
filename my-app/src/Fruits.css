@@ -1,18 +1,67 @@
-.fruits {
-    padding: 20px;
-    background-color: #f9f9f9;
+.fruits-container {
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fruits-container h2 {
+  color: #4CAF50;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.fruits-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.fruit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.fruit-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.fruit-item h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.total-amount {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.checkout-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.checkout-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .fruits-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
-  
-  .fruits h2 {
-    color: #4CAF50;
-  }
-  
-  .fruits ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .fruits li {
-    padding: 5px 0;
-  }
-  
+}
