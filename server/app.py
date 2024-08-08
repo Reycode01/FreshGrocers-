@@ -3,16 +3,16 @@ import requests
 import base64
 import logging
 from datetime import datetime
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
 # Your credentials
 consumer_key = 'z6wCfWHp85S3MRMVcOGCwgGxPcQnxvjibXtgLEe2uFuAZVaJ'
 consumer_secret = 'B738YEusgCY9HW0xXzp4qMXxc4gWYhkBeBxiwIZ4awWASMD3IsbDmWrn6IHGVrpA'
 shortcode = '174379'
-passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'  # Replace this with your actual passkey
+passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919' 
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)

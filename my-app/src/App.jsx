@@ -26,11 +26,16 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('cereals');
   const [showModal, setShowModal] = useState(false);
 
+  const [menuActive, setMenuActive] = useState(false);
+
   const cerealsRef = useRef(null);
   const vegetablesRef = useRef(null);
   const fruitsRef = useRef(null);
   const kitchenSauceRef = useRef(null);
-  
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
 
   useEffect(() => {
     const storedBucket = JSON.parse(localStorage.getItem('bucket')) || [];
@@ -147,7 +152,10 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="nav-items">
+          <div className="menu-toggle" onClick={toggleMenu}>
+            &#9776;
+          </div>
+          <div className={`nav-items ${menuActive ? 'active' : ''}`}>
             <ul>
               <li><a href="#cereals" onClick={() => {
                 setSelectedCategory('cereals');
@@ -259,7 +267,6 @@ const App = () => {
 };
 
 export default App;
-
 
 
 
