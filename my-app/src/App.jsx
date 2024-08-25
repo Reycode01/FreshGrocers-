@@ -194,7 +194,9 @@ const App = () => {
         >
           {!showAbout && !showProducts && !showCartDetails && !showCustomerList && (
             <>
-              <h1>Welcome to FreshGrocers!</h1>
+              <h1 class="font-dancing-script text-5xl text-gray-800 text-center my-5">
+                Pika Nasi</h1>
+
               <img src={coverImage} alt="Cover Image" className="cover-image" />
               <div className="delivery-info">
                 <h2>Order Delivery Near You</h2>
@@ -260,7 +262,7 @@ const App = () => {
       </Modal>
 
       <footer className="footer">
-        <p>&copy; 2024 FreshGrocers. All rights reserved.</p>
+        <p>&copy; 2024 Pika Nasi. All rights reserved.</p>
       </footer>
     </div>
   );

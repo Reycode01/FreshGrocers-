@@ -4,8 +4,8 @@
 }
 
 .cereals-container h2 {
-  color: #4CAF50;
-  font-size: 0.9rem; /* Slightly smaller font size */
+  color: #242424;
+  font-size: 1.5rem; /* Slightly smaller font size */
 }
 
 .search-bar {
@@ -21,7 +21,7 @@
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Fit as many columns as possible */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Fit as many columns as possible */
   gap: 1px;
 }
 
@@ -34,25 +34,25 @@
 }
 
 .product-card img {
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
 }
 
 .product-card h3 {
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 1rem; /* Smaller font size */
   margin: 10px 0;
 }
 
 .product-card .product-price,
 .product-card .product-quantity,
 .product-card .quantity-controls {
-  font-size: 0.8rem; /* Smaller font size */
+  font-size: 1rem; /* Smaller font size */
   margin: 5px 0;
 }
 
 .quantity-controls button {
   padding: 5px 10px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 .add-to-bucket,
@@ -90,7 +90,7 @@
 
   .quantity-controls button {
     padding: 4px 5px;
-    font-size: 0.9rem;
+    font-size: 1.9rem;
   }
 
   .add-to-bucket,

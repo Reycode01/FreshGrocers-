@@ -8,7 +8,10 @@ html, body {
   background-color: #f0f0f0;
   box-sizing: border-box;
 }
-
+/* Add this to ensure custom fonts are applied where needed */
+body {
+  @apply font-sans; /* This applies Tailwind's sans-serif font */
+}
 *,
 *::before,
 *::after {
@@ -141,7 +144,7 @@ nav ul li a {
 .container img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 /* Responsive Adjustments */
@@ -220,6 +223,5 @@ nav ul li a {
   margin-top: 0;
   text-align: center;
 }
-
 
 
