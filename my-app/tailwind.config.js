@@ -1,11 +1,16 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+// tailwind.config.js
+module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'dancing-script': ['Dancing Script', 'cursive'],
+      },
+      colors: {
+        'gray-800': '#2d2d2d',
+      },
+      fontSize: {
+        '5xl': '3rem',
+      },
+    },
   },
-  plugins: [],
 }

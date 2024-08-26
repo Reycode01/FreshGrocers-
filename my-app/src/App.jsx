@@ -194,8 +194,7 @@ const App = () => {
         >
           {!showAbout && !showProducts && !showCartDetails && !showCustomerList && (
             <>
-              <h1 class="font-dancing-script text-5xl text-gray-800 text-center my-5">
-                Pika Nasi</h1>
+              <h1 className="dancing-script stylish-text">Pika Nasi</h1>
 
               <img src={coverImage} alt="Cover Image" className="cover-image" />
               <div className="delivery-info">
