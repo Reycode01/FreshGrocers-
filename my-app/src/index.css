@@ -16,14 +16,21 @@ html, body {
 }
 
 /* Navbar Styles */
+/* Navbar Styles */
 nav {
   background-color: #4CAF50;
-  padding: 0.8rem 1rem; /* Initial padding for larger screens */
+  padding: 0.8rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  flex-wrap: nowrap; /* No wrapping */
+  width: 95%; /* Match width of the app container */
+  max-width: 1400px; /* Max width of the app container */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 50%; /* Center the navbar */
+  transform: translateX(-50%); /* Align center based on the container */
+  z-index: 1000; /* Keep it above other content */
+  box-sizing: border-box;
 }
 
 nav .nav-items {
