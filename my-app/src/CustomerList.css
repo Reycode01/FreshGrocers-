@@ -1,6 +1,6 @@
 .customer-list {
   padding: 1rem;
-  background-color: white;
+  background-color: rgba(216, 235, 105, 0.219);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
   margin: 0 auto;
@@ -16,9 +16,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
+  border: 1px solid #2c2424;
+  border-radius:38px;
+  padding: 0.1rem;
   background-color: #f9f9f9;
 }
 

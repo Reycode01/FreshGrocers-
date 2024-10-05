@@ -1,3 +1,7 @@
+.kitchen-sauce-container {
+  padding: 5px;
+  background-color: #86b44925;
+}
 .kitchen-sauce {
   padding: 1rem;
   background-color: white;

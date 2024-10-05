@@ -1,6 +1,6 @@
 .cereals-container {
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #a1a1a1;
 }
 
 .cereals-container h2 {
@@ -14,7 +14,7 @@
   margin-bottom: 15px;
   border: 1px solid #3498db;
   border-radius: 4px;
-  background-color: #ffffff;
+  background-color: #fdfdfd;
   color: #000000;
   font-size: 1rem;
 }

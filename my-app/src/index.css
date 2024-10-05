@@ -31,7 +31,7 @@ nav .nav-items {
   align-items: center;
   margin: 0;
   gap: 1rem; /* Gap for larger screens */
-  flex: 1; /* Stretch to fill available space */
+  flex: 0.8; /* Stretch to fill available space */
 }
 
 nav ul {

@@ -1,4 +1,8 @@
 /* Vegetables.css */
+.vegetables-container {
+  padding: 10px;
+  background-color: #fcb8cc50;
+}
 
 .ready-made-button {
   background-color: #ff7f50; /* Coral color */

@@ -1,6 +1,6 @@
 .cart-details {
   padding: 1rem;
-  background-color: white;
+  background-color: rgb(236, 223, 184);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
   margin: 0 auto;
@@ -39,8 +39,8 @@
 }
 
 .checkout-btn {
-  background-color: #3498db;
-  color: white;
+  background-color: #cdcf2c;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -49,7 +49,7 @@
 }
 
 .checkout-btn:hover {
-  background-color: #2980b9;
+  background-color: #e0d340;
 }
 
 
