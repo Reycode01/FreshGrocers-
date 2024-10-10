@@ -60,4 +60,28 @@
   .login-link:hover {
     color: #72d3da; /* Optional: Darken yellow on hover */
   }
-  
+  /* Login.css */
+.success-notification {
+  background-color: #e0d646;
+  color: rgb(118, 143, 142);
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.success-notification .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error {
+  color: rgb(0, 26, 255);
+  margin-top: 10px;
+}

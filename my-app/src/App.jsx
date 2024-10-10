@@ -15,6 +15,7 @@ import KitchenSauce from './KitchenSauce';
 import Login from './Login'; // Import the Login component
 import Register from './Register'; // Import the Register component
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,6 +32,7 @@ const App = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('cereals');
 
+  const navigate = useNavigate(); // Initialize navigate for navigation
   const cerealsRef = useRef(null);
   const vegetablesRef = useRef(null);
   const fruitsRef = useRef(null);
@@ -39,6 +41,7 @@ const App = () => {
   const handleLogout = async () => {
     await axios.post('/api/logout');
     setIsLoggedIn(false);
+    navigate('/'); // Redirect to home page after logout
   };
 
   useEffect(() => {
@@ -90,7 +93,7 @@ const App = () => {
   };
 
   const handleCartClick = () => {
-    setShowModal(true);
+    setShowCartDetails(true);
   };
 
   const handleCustomerListClick = () => {
@@ -156,7 +159,7 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className={`nav-items`}>
+          <div className="nav-items">
             <ul className="category-links">
               <li><a href="#cereals" onClick={() => {
                 setSelectedCategory('cereals');
@@ -180,8 +183,7 @@ const App = () => {
               {!isLoggedIn ? (
                 <>
                   <a href="#" className="login-link" onClick={() => { setIsLoginMode(true); setShowModal(true); }}>Login</a>
-
-                  <a href="#" className= "register-link" onClick={() => { setIsLoginMode(false); setShowModal(true); }}>Register</a>
+                  <a href="#" className="register-link" onClick={() => { setIsLoginMode(false); setShowModal(true); }}>Register</a>
                 </>
               ) : (
                 <a href="#" onClick={handleLogout}>Logout</a>
@@ -279,8 +281,6 @@ const App = () => {
 };
 
 export default App;
-
-
 
 
 

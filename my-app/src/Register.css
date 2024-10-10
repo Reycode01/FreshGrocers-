@@ -53,11 +53,7 @@
     color: #72d3da; /* Optional: Darken yellow on hover */
   }
   
-/* Error Message */
-.register-form p {
-    color: red; /* Error text color */
-    margin-top: 0.5rem; /* Space above the error message */
-}
+
 
 /* Responsive Design */
 @media (max-width: 480px) {
@@ -66,6 +62,12 @@
     }
 }
 
+/* Register.css */
+
+.success {
+    color: green; /* Set color for the success message */
+    margin-top: 10px; /* Add some spacing */
+}
 
   
   
