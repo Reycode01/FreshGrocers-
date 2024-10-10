@@ -1,0 +1,71 @@
+
+/* Close Button for the Modal */
+.register-form .close-button {
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* Distance from top */
+    right: 10px; /* Distance from right */
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    font-size: 1.5rem; /* Font size for close button */
+    cursor: pointer; /* Pointer cursor */
+    color: #4CAF50; /* Close button color */
+}
+
+.register-form .close-button:hover {
+    color: #FF0000; /* Change color on hover */
+}
+
+/* Input Fields Styling */
+.register-form input {
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Padding inside the input */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #265e15; /* Border color */
+    outline: none; /* Remove outline */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s ease; /* Transition for border color */
+    margin-bottom: 1rem; /* Space below each input */
+}
+
+.register-form input:focus {
+    border-color: #4CAF50; /* Change border color on focus */
+}
+
+/* Button Styling */
+.register-form button {
+    background-color: #4CAF50; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 0.75rem 1.5rem; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s ease; /* Transition for background color */
+}
+.register-link {
+    color: rgb(0, 0, 0); /* Change the login text color to yellow */
+    text-decoration: none; /* Optional: remove underline */
+    font-weight:bold; /* Optional: make it bold for better visibility */
+    font-size: small;
+  }
+  
+.register-link:hover {
+    color: #72d3da; /* Optional: Darken yellow on hover */
+  }
+  
+/* Error Message */
+.register-form p {
+    color: red; /* Error text color */
+    margin-top: 0.5rem; /* Space above the error message */
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .register-form {
+        width: 90%; /* Responsive width */
+    }
+}
+
+
+  
+  

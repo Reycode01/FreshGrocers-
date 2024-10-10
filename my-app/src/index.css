@@ -16,38 +16,38 @@ html, body {
 }
 
 /* Navbar Styles */
-/* Navbar Styles */
 nav {
   background-color: #4CAF50;
   padding: 0.8rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 95%; /* Match width of the app container */
-  max-width: 1400px; /* Max width of the app container */
-  position: fixed; /* Fix the navbar at the top */
+  width: 100%; /* Full width for small screens */
+  max-width: 1400px;
+  position: fixed;
   top: 0;
-  left: 50%; /* Center the navbar */
-  transform: translateX(-50%); /* Align center based on the container */
-  z-index: 1000; /* Keep it above other content */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   box-sizing: border-box;
 }
 
+/* Ensure that all navbar elements are flexed and aligned horizontally */
 nav .nav-items {
   display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
   align-items: center;
-  margin: 0;
-  gap: 1rem; /* Gap for larger screens */
-  flex: 0.8; /* Stretch to fill available space */
+  gap: 1rem;
 }
 
+/* Styling for the navbar links */
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  gap: 1rem; /* Gap for larger screens */
-  flex-wrap: nowrap; /* Ensure items stay on one line */
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li {
@@ -57,22 +57,21 @@ nav ul li {
 nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 1rem; /* Padding for larger screens */
+  padding: 0.5rem 4rem;
   display: block;
-  font-size: 0.9rem; /* Font size for larger screens */
+  font-size: 0.9rem;
 }
 
 /* Cart Icon Container */
 .cart-icon-container {
   position: relative;
-  display: flex; /* Use flex to allow for proper alignment */
-  align-items: center; /* Center items vertically */
-  margin-left: auto; /* Push it to the right end */
+  display: flex;
+  align-items: center;
 }
 
 .cart-icon {
-  width: 36px; /* Size for larger screens */
-  height: 36px; /* Size for larger screens */
+  width: 36px;
+  height: 36px;
 }
 
 .cart-badge {
@@ -82,14 +81,21 @@ nav ul li a {
   background-color: #35cbe5;
   color: white;
   border-radius: 50%;
-  padding: 0.2rem 0.5rem; /* Padding for larger screens */
-  font-size: 0.8rem; /* Font size for larger screens */
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
   font-weight: bold;
+}
+
+/* Auth and Cart Container (for login, register, and cart) */
+.auth-cart-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 /* App Container Styles */
 .app-container {
-  width: 95%;
+  width: 100%;
   max-width: 1400px;
   margin: 1rem auto;
   padding: 1rem;
@@ -104,146 +110,142 @@ nav ul li a {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem; /* Padding for larger screens */
+  padding: 0.75rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
   margin: 0.5rem;
-  font-size: 1rem; /* Font size for larger screens */
+  font-size: 1rem;
 }
 
 .delivery-btn:hover, .address-btn:hover {
   background-color: #45a049;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Smaller Screens */
 @media only screen and (max-width: 800px) {
   nav {
-    padding: 0.5rem 0.5rem; /* Reduced padding for smaller screens */
-  }
-
-  nav .nav-items {
-    gap: 0.5rem; /* Reduced gap for smaller screens */
+    flex-direction: column; /* Stack the navbar items vertically */
+    padding: 0.5rem;
   }
 
   nav ul {
-    gap: 0.5rem; /* Further reduced gap for smaller screens */
+    flex-wrap: wrap; /* Allow the items to wrap in case of overflow */
+    gap: 0.5rem; /* Reduced gap for smaller screens */
   }
 
   nav ul li a {
-    padding: 0.3rem 0.5rem; /* Further reduced padding */
-    font-size: 0.75rem; /* Reduced font size for smaller screens */
+    padding: 0.3rem;
+    font-size: 0.8rem; /* Reduced font size for smaller screens */
+  }
+
+  .auth-cart-container {
+    justify-content: center; /* Center the login/register and cart for small screens */
   }
 
   .cart-icon {
-    width: 30px; /* Reduced size for smaller screens */
-    height: 30px; /* Reduced size for smaller screens */
+    width: 30px;
+    height: 30px;
   }
 
   .cart-badge {
-    font-size: 0.6rem; /* Reduced badge font size */
-    padding: 0.1rem 0.3rem; /* Reduced badge padding */
-  }
-
-  .app-container {
-    padding: 0.5rem; /* Reduced padding for app container */
+    font-size: 0.7rem; /* Slightly smaller font size */
+    padding: 0.1rem 0.3rem;
   }
 
   .delivery-btn, .address-btn {
-    padding: 0.5rem 1rem; /* Adjusted padding for buttons */
-    font-size: 0.9rem; /* Adjusted font size for buttons */
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Additional Responsive Adjustments for Smaller Screens */
-@media (max-width: 480px) {
+/* Additional Responsive Adjustments for Very Small Screens */
+@media (max-width: 490px) {
   nav {
-    padding: 0.4rem; /* Further reduced padding for very small screens */
+    padding: 0.4rem;
   }
 
-  nav .nav-items {
-    gap: 0.3rem; /* Further reduced gap for very small screens */
+  nav ul {
+    gap: 0.1rem;
   }
 
   nav ul li a {
-    padding: 0.3rem; /* Further reduced padding */
-    font-size: 0.65rem; /* Further reduced font size */
+    padding: 0.1rem;
+    font-size: 0.6rem;
   }
 
   .cart-icon {
-    width: 28px; /* Further reduced cart icon size */
-    height: 28px; /* Further reduced cart icon size */
+    width: 28px;
+    height: 28px;
   }
 
   .cart-badge {
-    font-size: 0.5rem; /* Further reduced badge font size */
-    padding: 0.1rem 0.2rem; /* Further reduced badge padding */
-  }
-
-  .app-container {
-    padding: 0.3rem; /* Further reduced padding for app container */
+    font-size: 0.6rem;
+    padding: 0.1rem 0.2rem;
   }
 
   .delivery-btn, .address-btn {
-    padding: 0.4rem 0.8rem; /* Further reduced padding for buttons */
-    font-size: 0.8rem; /* Further reduced font size for buttons */
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
+
 .cover-image {
-  width: 50%; /* You can adjust the percentage as needed */
-  height: auto; /* This maintains the aspect ratio */
-  display: block; /* Ensures the margin auto works */
-  margin: 0 auto; /* Centers the image */
-  max-width: 300px; /* Sets a maximum width for the image */
-  max-height: 500px; /* Sets a maximum height for the image */
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  max-height: 500px;
 }
+
 /* Delivery Info Styles */
 .delivery-info {
-  text-align: center; /* Center text */
-  margin: 1rem auto; /* Center the delivery info section */
-  max-width: 600px; /* Limit the max width for larger screens */
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 600px;
 }
 
 .delivery-info h1 {
-  font-size: 1.5rem; /* Make the heading larger */
-  margin-bottom: 0.5rem; /* Space below the heading */
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .delivery-info p {
-  font-size: 1rem; /* Standard size for paragraph */
-  margin-bottom: 1rem; /* Space below the paragraph */
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .address-input {
-  width: 90%; /* Make input responsive */
-  max-width: 300px; /* Limit max width for larger screens */
-  padding: 0.5rem; /* Padding for input */
-  border-radius: 5px; /* Rounded corners */
-  border: 1px solid #ccc; /* Border style */
-  margin-bottom: 1rem; /* Space below the input */
+  width: 90%;
+  max-width: 300px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
 }
 
 /* Button Container Styles */
 .button-container {
-  display: flex; /* Use flexbox for buttons */
-  justify-content: center; /* Center buttons horizontally */
-  gap: 1rem; /* Space between buttons */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* Responsive Adjustments */
 @media only screen and (max-width: 480px) {
   .delivery-info h1 {
-    font-size: 1.25rem; /* Slightly smaller heading for small screens */
+    font-size: 1.5rem;
   }
 
   .delivery-info p {
-    font-size: 0.9rem; /* Smaller font for the paragraph */
+    font-size: 0.9rem;
   }
 
   .address-input {
-    width: 100%; /* Full width for input on small screens */
+    width: 100%;
   }
 
   .delivery-btn, .address-btn {
-    font-size: 0.8rem; /* Adjust button font size */
+    font-size: 0.8rem;
   }
 }

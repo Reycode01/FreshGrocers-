@@ -1,0 +1,63 @@
+/* Global Styles for the login form */
+.login-form {
+    max-width:400px; /* Set a max width for the form */
+    margin: 2rem auto; /* Center the form horizontally and add top margin */
+    padding: 0.1rem; /* Add padding inside the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background-color: #867a7a; /* White background */
+  }
+  
+  /* Heading styles */
+  .login-form h2 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 1.2rem; /* Space below the heading */
+  }
+  
+  /* Input fields styles */
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Padding for the input */
+    margin-bottom: 1rem; /* Space below each input */
+    border: 1px solid #aca3a3; /* Border color */
+    border-radius: 9px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+  }
+  
+  /* Button styles */
+  .login-form button {
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Padding inside the button */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition effect for background color */
+  }
+  
+  /* Button hover effect */
+  .login-form button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Error message styles */
+  .login-form p {
+    color: red; /* Red color for error messages */
+    text-align: center; /* Center the error message */
+    margin-top: 1rem; /* Space above the error message */
+  }
+  .login-link {
+    color: rgb(0, 0, 0); /* Change the login text color to yellow */
+    text-decoration: none; /* Optional: remove underline */
+    font-weight:bold; /* Optional: make it bold for better visibility */
+    font-size: small;
+  }
+  
+  .login-link:hover {
+    color: #72d3da; /* Optional: Darken yellow on hover */
+  }
+  

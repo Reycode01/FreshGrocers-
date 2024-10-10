@@ -12,8 +12,14 @@ import Cereals from './Cereals';
 import Vegetables from './Vegetables';
 import Fruits from './Fruits';
 import KitchenSauce from './KitchenSauce';
+import Login from './Login'; // Import the Login component
+import Register from './Register'; // Import the Register component
+import axios from 'axios';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isLoginMode, setIsLoginMode] = useState(true); // Toggle between login and register
   const [showAbout, setShowAbout] = useState(false);
   const [showProducts, setShowProducts] = useState(false);
   const [showCartDetails, setShowCartDetails] = useState(false);
@@ -24,17 +30,15 @@ const App = () => {
   const [bucket, setBucket] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('cereals');
-  const [showModal, setShowModal] = useState(false);
-
-  const [menuActive, setMenuActive] = useState(false);
 
   const cerealsRef = useRef(null);
   const vegetablesRef = useRef(null);
   const fruitsRef = useRef(null);
   const kitchenSauceRef = useRef(null);
 
-  const toggleMenu = () => {
-    setMenuActive(!menuActive);
+  const handleLogout = async () => {
+    await axios.post('/api/logout');
+    setIsLoggedIn(false);
   };
 
   useEffect(() => {
@@ -48,6 +52,28 @@ const App = () => {
     localStorage.setItem('bucket', JSON.stringify(bucket));
     localStorage.setItem('totalAmount', totalAmount.toString());
   }, [bucket, totalAmount]);
+
+  const handleScrollToCategory = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: 'smooth'
+    });
+  };
+
+  const renderCategory = () => {
+    switch (selectedCategory) {
+      case 'cereals':
+        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
+      case 'vegetables':
+        return <Vegetables onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
+      case 'fruits':
+        return <Fruits onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
+      case 'kitchensauce':
+        return <KitchenSauce onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
+      default:
+        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
+    }
+  };
 
   const handleAboutClick = () => {
     setShowAbout(true);
@@ -122,28 +148,6 @@ const App = () => {
     setShowCartDetails(true);
   };
 
-  const handleScrollToCategory = (ref) => {
-    window.scrollTo({
-      top: ref.current.offsetTop,
-      behavior: 'smooth'
-    });
-  };
-
-  const renderCategory = () => {
-    switch (selectedCategory) {
-      case 'cereals':
-        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
-      case 'vegetables':
-        return <Vegetables onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
-      case 'fruits':
-        return <Fruits onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
-      case 'kitchensauce':
-        return <KitchenSauce onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
-      default:
-        return <Cereals onAddToBucket={handleAddToBucket} onDone={handleCalculateTotal} />;
-    }
-  };
-
   return (
     <div className="app-container">
       <header className="App-header">
@@ -152,11 +156,8 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="menu-toggle" onClick={toggleMenu}>
-            &#9776;
-          </div>
-          <div className={`nav-items ${menuActive ? 'active' : ''}`}>
-            <ul>
+          <div className={`nav-items`}>
+            <ul className="category-links">
               <li><a href="#cereals" onClick={() => {
                 setSelectedCategory('cereals');
                 handleScrollToCategory(cerealsRef);
@@ -175,11 +176,22 @@ const App = () => {
               }}>Kitchen Sauce</a></li>
               <li><a href="#" onClick={handleCustomerListClick}>Customer List</a></li>
             </ul>
-            <div className="cart-icon-container" onClick={handleCartClick}>
-              <img src={cartImage} alt="Cart" className="cart-icon" />
-              <span className="cart-badge">
-                {bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}
-              </span>
+            <div className="auth-cart-container">
+              {!isLoggedIn ? (
+                <>
+                  <a href="#" className="login-link" onClick={() => { setIsLoginMode(true); setShowModal(true); }}>Login</a>
+
+                  <a href="#" className= "register-link" onClick={() => { setIsLoginMode(false); setShowModal(true); }}>Register</a>
+                </>
+              ) : (
+                <a href="#" onClick={handleLogout}>Logout</a>
+              )}
+              <div className="cart-icon-container" onClick={handleCartClick}>
+                <img src={cartImage} alt="Cart" className="cart-icon" />
+                <span className="cart-badge">
+                  {bucket.reduce((acc, item) => acc + (item.initialQuantity || 1), 0)}
+                </span>
+              </div>
             </div>
           </div>
         </motion.nav>
@@ -195,7 +207,6 @@ const App = () => {
           {!showAbout && !showProducts && !showCartDetails && !showCustomerList && (
             <>
               <h1 className="dancing-script stylish-text">Pika Nasi</h1>
-
               <img src={coverImage} alt="Cover Image" className="cover-image" />
               <div className="delivery-info">
                 <h2>Order Delivery Near You</h2>
@@ -257,7 +268,7 @@ const App = () => {
       </main>
 
       <Modal show={showModal} handleClose={() => setShowModal(false)}>
-        <CartDetails cart={bucket} totalAmount={totalAmount} onDeleteFromBucket={handleDeleteFromBucket} />
+        {isLoginMode ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Register setIsLoggedIn={setIsLoggedIn} />}
       </Modal>
 
       <footer className="footer">
@@ -268,6 +279,8 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
 
